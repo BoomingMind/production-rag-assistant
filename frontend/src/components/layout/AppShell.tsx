@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { BrainCircuit } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { UploadDialog } from "@/components/upload/UploadDialog";
 
@@ -17,7 +16,7 @@ export function AppShell({
   return (
     <div className="flex h-full flex-col">
       <header className="flex items-center gap-3 border-b border-border bg-surface/60 px-4 py-2.5 backdrop-blur">
-        <BrainCircuit className="h-5 w-5 text-accent" />
+        <img src="/favicon.png" alt="" className="h-6 w-6" />
         <div className="flex flex-col leading-tight">
           <span className="text-sm font-semibold">Agentic RAG Assistant</span>
           <span className="text-[11px] text-muted">LangGraph · LangChain · LangSmith</span>
