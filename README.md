@@ -116,6 +116,8 @@ sequenceDiagram
 ## 🚀 Quickstart
 
 ```bash
+git clone https://github.com/dkleptsov/agentic-rag-assistant.git
+cd agentic-rag-assistant
 cp .env.example .env      # fill in OPENAI_API_KEY (TAVILY_API_KEY + LANGSMITH_* recommended)
 ```
 
@@ -249,7 +251,11 @@ docker-compose.yml    backend (uvicorn) + frontend (nginx)
 
 ## 👤 Author
 
-**Denis Kleptsov** — [github.com/dkleptsov](https://github.com/dkleptsov)
+**Denis Kleptsov** — AI/ML Engineer (agentic LLM systems · applied ML · full-stack)
+
+[![Website](https://img.shields.io/badge/Website-kleptsov.com-58A6FF?style=for-the-badge&logo=safari&logoColor=white)](https://kleptsov.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kleptsov/)
+[![GitHub](https://img.shields.io/badge/GitHub-dkleptsov-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dkleptsov)
 
 ## 📄 License
 
