@@ -14,20 +14,24 @@ export async function* parseSSEStream(
   const reader = res.body.pipeThrough(new TextDecoderStream(), { signal }).getReader();
   let buffer = "";
 
+  // Frames are separated by a blank line; servers may use \n or \r\n (sse-starlette
+  // emits \r\n\r\n), so match both.
+  const FRAME = /\r?\n\r?\n/;
+
   try {
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
       buffer += value;
 
-      let sep: number;
-      while ((sep = buffer.indexOf("\n\n")) !== -1) {
-        const frame = buffer.slice(0, sep);
-        buffer = buffer.slice(sep + 2);
+      let match: RegExpExecArray | null;
+      while ((match = FRAME.exec(buffer)) !== null) {
+        const frame = buffer.slice(0, match.index);
+        buffer = buffer.slice(match.index + match[0].length);
 
         let eventName = "message";
         const dataLines: string[] = [];
-        for (const raw of frame.split("\n")) {
+        for (const raw of frame.split(/\r?\n/)) {
           if (raw.startsWith(":")) continue; // keep-alive comment
           if (raw.startsWith("event:")) eventName = raw.slice(6).trim();
           else if (raw.startsWith("data:")) dataLines.push(raw.slice(5).replace(/^ /, ""));
